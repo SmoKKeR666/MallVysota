@@ -1,0 +1,95 @@
+﻿<Page x:Class="Курсач.View.Pages.StartPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Курсач.View.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="700"
+      Title="StartPage">
+
+    <Grid Margin="5">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+
+        <Image Source="/Resources/Images/Figma_IwTebhHlcz.png" Margin="5"/>
+
+        <Grid Grid.Row="0" Grid.Column="1" Name="RentGrid">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="250" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="250" />
+                <RowDefinition Height="1*" />
+            </Grid.RowDefinitions>
+            <Border Grid.Row="1" Grid.Column="1" 
+                    BorderBrush="Black" BorderThickness="5" CornerRadius="20"/>
+            <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Vertical">
+                <TextBlock/>
+                <Button Background="White" BorderBrush="Transparent" Width="230" Height="230" Name="RentBtn" Click="RentBtn_Click">
+                    <StackPanel>
+                        <Image Source="/Resources/Images/Figma_wTC2NXQqw7.png" Height="200"/>
+                        <TextBlock Text="Арендовать помещение" FontSize="20"/> 
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+        </Grid>
+        
+        <Grid Grid.Row="1" Grid.Column="0" Name="RentListGrid">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="250" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="250" />
+                <RowDefinition Height="1*" />
+            </Grid.RowDefinitions>
+            <Border Grid.Row="1" Grid.Column="1" 
+                    BorderBrush="Black" BorderThickness="5" CornerRadius="20"/>
+            <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Vertical">
+                <TextBlock/>
+                <Button Background="White" BorderBrush="Transparent" Width="230" Height="230" Name="OpenListBtn" Click="OpenListBtn_Click">
+                    <StackPanel>
+                        <Image Source="/Resources/Images/Figma_9ImSrg7dKG.png" Height="200"/>
+                        <TextBlock Text="Мои аренды" FontSize="20"/>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+        </Grid>
+        
+        <Grid Grid.Row="1" Grid.Column="1" Name="InformationGrid">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="250" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="250" />
+                <RowDefinition Height="1*" />
+            </Grid.RowDefinitions>
+            <Border Grid.Row="1" Grid.Column="1" 
+                    BorderBrush="Black" BorderThickness="5" CornerRadius="20"/>
+            <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Vertical">
+                <TextBlock/>
+                <Button Background="White" BorderBrush="Transparent" Width="230" Height="230" Name="InformationBtn" Click="InformationBtn_Click">
+                    <StackPanel>
+                        <Image Source="/Resources/Images/Figma_swfzet4WYD.png" Height="200"/>
+                        <TextBlock Text="Информация" FontSize="20"/>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Page>

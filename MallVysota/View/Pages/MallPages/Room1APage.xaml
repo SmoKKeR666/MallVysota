@@ -1,0 +1,82 @@
+﻿<Page x:Class="MallVysota.View.Pages.MallPages.Room1APage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:MallVysota.View.Pages.MallPages"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="700"
+      Title="Room1APage">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="10" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10" />
+            <RowDefinition Height="150" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="10" />
+        </Grid.RowDefinitions>
+        <DataGrid Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" AutoGenerateColumns="False"
+              HorizontalAlignment="Left" Name="DatGr" Loaded="DatGr_Loaded"  Width="auto"
+          SelectionChanged="DatGr_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Название"
+            Binding="{Binding Rooms.Name}"/>
+                <DataGridTextColumn Header="Предприятие"
+            Binding="{Binding Rooms.Users.Facility}"/>
+                <DataGridTextColumn Header="Тип помещения"
+            Binding="{Binding Rooms.RoomTypes.Name}"/>
+                <DataGridTextColumn Header="Статус помещения"
+            Binding="{Binding Rooms.RoomStatus.Name}"/>
+                <DataGridTextColumn Header="Начало аренды"
+            Binding="{Binding Rooms.RentDateStart, StringFormat=dd.MM.yyyy}"/>
+                <DataGridTextColumn Header="Конец аренды"
+            Binding="{Binding Rooms.RentDateEnd, StringFormat=dd.MM.yyyy}"/>
+                <DataGridTextColumn Header="Цена в месяц"
+            Binding="{Binding Rooms.MonthPrice}"/>
+                <DataGridTextColumn Header="Цена в год"
+            Binding="{Binding Rooms.YearPrice}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <TextBlock Grid.Row="3" Grid.Column="1" Text="Выберите зал:" FontSize="20"/>
+        <ComboBox Grid.Row="3" Grid.Column="3" Name="RoomCmb" SelectionChanged="RoomCmb_SelectionChanged"  FontSize="20"/>
+
+        <TextBlock Grid.Row="5" Grid.Column="1" Text="Введите название предприятия:" FontSize="20"/>
+        <TextBox Grid.Row="5" Grid.Column="3" FontSize="20" Name="FacilityTxb"/>
+
+        <TextBlock Grid.Row="7" Grid.Column="1" Text="Выберите дату начала аренды:" FontSize="20"/>
+        <DatePicker Grid.Row="7" Grid.Column="3" FontSize="20" Name="RentDateStartDtp"/>
+
+        <TextBlock Grid.Row="9" Grid.Column="1" Text="Выберите дату окончания аренды:" FontSize="20"/>
+        <DatePicker Grid.Row="9" Grid.Column="3" FontSize="20" Name="RentDateEndDtp"/>
+
+        <TextBlock Grid.Row="11" Grid.Column="1" Text="Цена аренды в месяц:" FontSize="20"/>
+        <TextBlock Grid.Row="11" Grid.Column="3" Text="{Binding Path=MonthPrice}" Name="MonthPriceTxtblk" FontSize="20"/>
+
+        <TextBlock Grid.Row="13" Grid.Column="1" Text="Цена аренды в год:" FontSize="20"/>
+        <TextBlock Grid.Row="13" Grid.Column="3" Text="{Binding Path=YearPrice}" Name="YearPriceTxtblk" FontSize="20"/>
+
+        <Button Grid.Row="15" Grid.Column="1" Grid.ColumnSpan="3" Name="RentRoomBtn" Click="RentRoomBtn_Click"  Height="50"
+            Background="Black" Foreground="White" BorderBrush="Black" Content="Арендовать помещение" FontSize="40"/>
+    </Grid>
+</Page>

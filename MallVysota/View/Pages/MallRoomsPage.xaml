@@ -1,0 +1,107 @@
+﻿<Page x:Class="Курсач.View.Pages.MallRoomsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Курсач.View.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="700"
+      Title="MallRoomsPage">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="10" />
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="10" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="10" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="10" />
+                <RowDefinition Height="1*" />
+            </Grid.RowDefinitions>
+            <DataGrid Grid.Row="0" Grid.Column="1" Grid.RowSpan="5" AutoGenerateColumns="False"
+                      HorizontalAlignment="Left" Name="DatGr" Loaded="DatGr_Loaded" Width="auto">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Название"
+                                        Binding="{Binding Rooms.Name}"/>
+                    <DataGridTextColumn Header="Тип помещения"
+                                        Binding="{Binding Rooms.RoomTypes.Name}"/>
+                    <DataGridTextColumn Header="Статус помещения"
+                                        Binding="{Binding Rooms.RoomStatus.Name}"/>
+                    <DataGridTextColumn Header="Арендатор"
+                                        Binding="{Binding Rooms.Users.FullName}"/>
+                    <DataGridTextColumn Header="Начало аренды"
+                                        Binding="{Binding Rooms.RentDateStart, StringFormat=dd.MM.yyyy}"/>
+                    <DataGridTextColumn Header="Конец аренды"
+                                        Binding="{Binding Rooms.RentDateEnd, StringFormat=dd.MM.yyyy}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+        <StackPanel Orientation="Vertical" Grid.Row="2" Grid.Column="1" Height="280" Width="700">
+            <StackPanel Orientation="Horizontal" Height="140">
+                <Button Width="220" Margin="10 10 0 10" Background="White" BorderBrush="Black"
+                        Content="Зал 1A" FontSize="35" Name="Room1ABtn" Click="Room1ABtn_Click">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10 0 0 10"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+                <Button Width="220" Margin="0 10 0 10" Background="White" BorderBrush="Black"
+                        Content="Зал 1B" FontSize="35" Name="Room1BBtn" Click="Room1BBtn_Click">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="0 0 0 0"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+                <Button Width="220" Margin="0 10 0 10" Background="White" BorderBrush="Black"
+                        Content="Зал 1C" FontSize="35" Name="Room1CBtn" Click="Room1CBtn_Click">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="0 10 10 0"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Height="140">
+                <Button Width="220" Margin="10 10 0 10" Background="White" BorderBrush="Black"
+                        Content="Зал 2A" FontSize="35" Name="Room2ABtn" Click="Room2ABtn_Click">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10 0 0 10"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+                <Button Width="220" Margin="0 10 0 10" Background="White" BorderBrush="Black"
+                        Content="Зал 2B" FontSize="35" Name="Room2BBtn" Click="Room2BBtn_Click">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="0 0 0 0"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+                <Button Width="220" Margin="0 10 0 10" Background="White" BorderBrush="Black"
+                        Content="Зал 2C" FontSize="35" Name="Room2CBtn" Click="Room2CBtn_Click">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="0 10 10 0"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>

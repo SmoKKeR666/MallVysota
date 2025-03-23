@@ -1,0 +1,72 @@
+﻿<Page x:Class="Курсач.View.Pages.EnterPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Курсач.View.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="400" d:DesignWidth="400"
+      Title="EnterPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="10" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="200" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+        
+        <TextBlock Grid.Row="1" Grid.Column="1" Text="Логин:"
+                   HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Foreground="Black"/>
+        <TextBox Grid.Row="3" Grid.Column="1" FontSize="20" Name="EnterLoginTxb"/>
+
+        <TextBlock Grid.Row="5" Grid.Column="1" Text="Пароль:"
+                   HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Foreground="Black"/>
+        <PasswordBox Grid.Row="7" Grid.Column="1" Name="EnterPasswordPb">
+            <PasswordBox.Resources>
+                <Style x:Key="{x:Type PasswordBox}" TargetType="{x:Type PasswordBox}">
+                    <Setter Property="VerticalContentAlignment" Value="Center" />
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                    <Setter Property="FontSize" Value="20"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type PasswordBox}">
+                                <Border CornerRadius="15" BorderThickness="1" BorderBrush="Black" Background="white">
+                                    <ScrollViewer x:Name="PART_ContentHost"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </PasswordBox.Resources>
+        </PasswordBox>
+
+
+        <Button Grid.Row="11" Grid.Column="1" FontSize="20" Content="Войти" Name="EnterBtn" Click="EnterBtn_Click"
+                Background="Black" Foreground="White" BorderBrush="White"/>
+
+        <Button Grid.Row="13" Grid.Column="1" Name="RegBtn" Click="RegBtn_Click" Width="150"
+                Background="Transparent" Foreground="Transparent" BorderBrush="Transparent">
+            <TextBlock Grid.Row="13" Grid.Column="1" Text="Нет аккаунта? Зарегистрироваться" TextWrapping="Wrap"
+                   TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15"
+                   Foreground="CornflowerBlue" UseLayoutRounding="True" TextDecorations="Underline">
+            </TextBlock>
+        </Button>
+    </Grid>
+</Page>

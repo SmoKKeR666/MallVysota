@@ -1,0 +1,74 @@
+﻿<Page x:Class="Курсач.View.Pages.MenuPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Курсач.View.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="300"
+      Title="MenuPage">
+
+    <Grid Margin="5">
+        <StackPanel Orientation="Vertical">
+            <Grid>
+                <TextBlock Text="Меню" FontSize="30" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+            <Separator/>
+            <Button Background="White" BorderBrush="Transparent" Height="60" HorizontalContentAlignment="Left" Name="StartPageBtn" Click="StartPageBtn_Click">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="0"/>
+                    </Style>
+                </Button.Resources>
+                <TextBlock Text="Главная" FontSize="30" Foreground="Black" Margin="10 0 0 0">
+                    
+                </TextBlock>
+            </Button>
+            <Separator/>
+            <Button Background="White" BorderBrush="Transparent" Height="60" HorizontalContentAlignment="Left" Name="RentPageBtn" Click="RentPageBtn_Click">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="0"/>
+                    </Style>
+                </Button.Resources>
+                <TextBlock Text="Аренда" FontSize="30" Foreground="Black" Margin="10 0 0 0">
+
+                </TextBlock>
+            </Button>
+            <Separator/>
+            <Button Background="White" BorderBrush="Transparent" Height="60" HorizontalContentAlignment="Left" Name="ListPageBtn" Click="ListPageBtn_Click">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="0"/>
+                    </Style>
+                </Button.Resources>
+                <TextBlock Text="Мои аренды" FontSize="30" Foreground="Black" Margin="10 0 0 0">
+
+                </TextBlock>
+            </Button>
+            <Separator/>
+            <Button Background="White" BorderBrush="Transparent" Height="60" HorizontalContentAlignment="Left" Name="InformationPageBtn" Click="InformationPageBtn_Click">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="0"/>
+                    </Style>
+                </Button.Resources>
+                <TextBlock Text="Информация" FontSize="30" Foreground="Black" Margin="10 0 0 0">
+
+                </TextBlock>
+            </Button>
+            <Separator/>
+            <Separator Margin="0 190 0 0"/>
+            <Button Background="White" BorderBrush="Transparent" Height="60" HorizontalContentAlignment="Left" Name="ExitBtn" Click="ExitBtn_Click">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="0"/>
+                    </Style>
+                </Button.Resources>
+                <TextBlock Text="Выйти" FontSize="30" Foreground="Black" Margin="10 0 0 0">
+
+                </TextBlock>
+            </Button>
+        </StackPanel>
+    </Grid>
+</Page>

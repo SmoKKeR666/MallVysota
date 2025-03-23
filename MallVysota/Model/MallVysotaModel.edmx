@@ -1,0 +1,499 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Хранилище MallVysotaModel" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Information">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDUserAgreement" Type="int" Nullable="false" />
+          <Property Name="AboutApp" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RentMall">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDRooms" Type="int" Nullable="false" />
+          <Property Name="IDUsers" Type="int" />
+          <Property Name="IDInformation" Type="int" />
+        </EntityType>
+        <EntityType Name="Rooms">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IDRoomType" Type="int" Nullable="false" />
+          <Property Name="IDRenter" Type="int" />
+          <Property Name="RentDateStart" Type="date" />
+          <Property Name="RentDateEnd" Type="date" />
+          <Property Name="IDRoomStatus" Type="int" Nullable="false" />
+          <Property Name="Photo" Type="nvarchar(max)" />
+          <Property Name="MonthPrice" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="YearPrice" Type="decimal" Precision="21" Scale="2" StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="RoomStatus">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RoomTypes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserAgreement">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Facility" Type="nvarchar" MaxLength="50" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+          <Property Name="Login" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IDRentedRooms" Type="int" />
+        </EntityType>
+        <Association Name="FK_Information_UserAgreement">
+          <End Role="UserAgreement" Type="Self.UserAgreement" Multiplicity="1" />
+          <End Role="Information" Type="Self.Information" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserAgreement">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Information">
+              <PropertyRef Name="IDUserAgreement" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RentMall_Information">
+          <End Role="Information" Type="Self.Information" Multiplicity="0..1" />
+          <End Role="RentMall" Type="Self.RentMall" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Information">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RentMall">
+              <PropertyRef Name="IDInformation" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RentMall_Rooms">
+          <End Role="Rooms" Type="Self.Rooms" Multiplicity="1" />
+          <End Role="RentMall" Type="Self.RentMall" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rooms">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RentMall">
+              <PropertyRef Name="IDRooms" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rooms_RoomStatus">
+          <End Role="RoomStatus" Type="Self.RoomStatus" Multiplicity="1" />
+          <End Role="Rooms" Type="Self.Rooms" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoomStatus">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Rooms">
+              <PropertyRef Name="IDRoomStatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rooms_RoomTypes">
+          <End Role="RoomTypes" Type="Self.RoomTypes" Multiplicity="1" />
+          <End Role="Rooms" Type="Self.Rooms" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoomTypes">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Rooms">
+              <PropertyRef Name="IDRoomType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rooms_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Rooms" Type="Self.Rooms" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Rooms">
+              <PropertyRef Name="IDRenter" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_Rooms">
+          <End Role="Rooms" Type="Self.Rooms" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rooms">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="IDRentedRooms" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище MallVysotaModelContainer">
+          <EntitySet Name="Information" EntityType="Self.Information" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RentMall" EntityType="Self.RentMall" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rooms" EntityType="Self.Rooms" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RoomStatus" EntityType="Self.RoomStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RoomTypes" EntityType="Self.RoomTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserAgreement" EntityType="Self.UserAgreement" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Information_UserAgreement" Association="Self.FK_Information_UserAgreement">
+            <End Role="UserAgreement" EntitySet="UserAgreement" />
+            <End Role="Information" EntitySet="Information" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RentMall_Information" Association="Self.FK_RentMall_Information">
+            <End Role="Information" EntitySet="Information" />
+            <End Role="RentMall" EntitySet="RentMall" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RentMall_Rooms" Association="Self.FK_RentMall_Rooms">
+            <End Role="Rooms" EntitySet="Rooms" />
+            <End Role="RentMall" EntitySet="RentMall" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rooms_RoomStatus" Association="Self.FK_Rooms_RoomStatus">
+            <End Role="RoomStatus" EntitySet="RoomStatus" />
+            <End Role="Rooms" EntitySet="Rooms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rooms_RoomTypes" Association="Self.FK_Rooms_RoomTypes">
+            <End Role="RoomTypes" EntitySet="RoomTypes" />
+            <End Role="Rooms" EntitySet="Rooms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rooms_Users" Association="Self.FK_Rooms_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Rooms" EntitySet="Rooms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Rooms" Association="Self.FK_Users_Rooms">
+            <End Role="Rooms" EntitySet="Rooms" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MallVysotaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="MallVysotaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Information" EntityType="MallVysotaModel.Information" />
+          <EntitySet Name="RentMall" EntityType="MallVysotaModel.RentMall" />
+          <EntitySet Name="Rooms" EntityType="MallVysotaModel.Rooms" />
+          <EntitySet Name="RoomStatus" EntityType="MallVysotaModel.RoomStatus" />
+          <EntitySet Name="RoomTypes" EntityType="MallVysotaModel.RoomTypes" />
+          <EntitySet Name="UserAgreement" EntityType="MallVysotaModel.UserAgreement" />
+          <EntitySet Name="Users" EntityType="MallVysotaModel.Users" />
+          <AssociationSet Name="FK_Information_UserAgreement" Association="MallVysotaModel.FK_Information_UserAgreement">
+            <End Role="UserAgreement" EntitySet="UserAgreement" />
+            <End Role="Information" EntitySet="Information" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RentMall_Information" Association="MallVysotaModel.FK_RentMall_Information">
+            <End Role="Information" EntitySet="Information" />
+            <End Role="RentMall" EntitySet="RentMall" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RentMall_Rooms" Association="MallVysotaModel.FK_RentMall_Rooms">
+            <End Role="Rooms" EntitySet="Rooms" />
+            <End Role="RentMall" EntitySet="RentMall" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rooms_RoomStatus" Association="MallVysotaModel.FK_Rooms_RoomStatus">
+            <End Role="RoomStatus" EntitySet="RoomStatus" />
+            <End Role="Rooms" EntitySet="Rooms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rooms_RoomTypes" Association="MallVysotaModel.FK_Rooms_RoomTypes">
+            <End Role="RoomTypes" EntitySet="RoomTypes" />
+            <End Role="Rooms" EntitySet="Rooms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rooms_Users" Association="MallVysotaModel.FK_Rooms_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Rooms" EntitySet="Rooms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Rooms" Association="MallVysotaModel.FK_Users_Rooms">
+            <End Role="Rooms" EntitySet="Rooms" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Information">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDUserAgreement" Type="Int32" Nullable="false" />
+          <Property Name="AboutApp" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="UserAgreement" Relationship="MallVysotaModel.FK_Information_UserAgreement" FromRole="Information" ToRole="UserAgreement" />
+          <NavigationProperty Name="RentMall" Relationship="MallVysotaModel.FK_RentMall_Information" FromRole="Information" ToRole="RentMall" />
+        </EntityType>
+        <EntityType Name="RentMall">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDRooms" Type="Int32" Nullable="false" />
+          <Property Name="IDUsers" Type="Int32" />
+          <Property Name="IDInformation" Type="Int32" />
+          <NavigationProperty Name="Information" Relationship="MallVysotaModel.FK_RentMall_Information" FromRole="RentMall" ToRole="Information" />
+          <NavigationProperty Name="Rooms" Relationship="MallVysotaModel.FK_RentMall_Rooms" FromRole="RentMall" ToRole="Rooms" />
+        </EntityType>
+        <EntityType Name="Rooms">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IDRoomType" Type="Int32" Nullable="false" />
+          <Property Name="IDRenter" Type="Int32" />
+          <Property Name="RentDateStart" Type="DateTime" Precision="0" />
+          <Property Name="RentDateEnd" Type="DateTime" Precision="0" />
+          <Property Name="IDRoomStatus" Type="Int32" Nullable="false" />
+          <Property Name="Photo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MonthPrice" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="YearPrice" Type="Decimal" Precision="21" Scale="2" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="RentMall" Relationship="MallVysotaModel.FK_RentMall_Rooms" FromRole="Rooms" ToRole="RentMall" />
+          <NavigationProperty Name="RoomStatus" Relationship="MallVysotaModel.FK_Rooms_RoomStatus" FromRole="Rooms" ToRole="RoomStatus" />
+          <NavigationProperty Name="RoomTypes" Relationship="MallVysotaModel.FK_Rooms_RoomTypes" FromRole="Rooms" ToRole="RoomTypes" />
+          <NavigationProperty Name="Users" Relationship="MallVysotaModel.FK_Rooms_Users" FromRole="Rooms" ToRole="Users" />
+          <NavigationProperty Name="Users1" Relationship="MallVysotaModel.FK_Users_Rooms" FromRole="Rooms" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="RoomStatus">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Rooms" Relationship="MallVysotaModel.FK_Rooms_RoomStatus" FromRole="RoomStatus" ToRole="Rooms" />
+        </EntityType>
+        <EntityType Name="RoomTypes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Rooms" Relationship="MallVysotaModel.FK_Rooms_RoomTypes" FromRole="RoomTypes" ToRole="Rooms" />
+        </EntityType>
+        <EntityType Name="UserAgreement">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Information" Relationship="MallVysotaModel.FK_Information_UserAgreement" FromRole="UserAgreement" ToRole="Information" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FullName" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Facility" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Login" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IDRentedRooms" Type="Int32" />
+          <NavigationProperty Name="Rooms" Relationship="MallVysotaModel.FK_Rooms_Users" FromRole="Users" ToRole="Rooms" />
+          <NavigationProperty Name="Rooms1" Relationship="MallVysotaModel.FK_Users_Rooms" FromRole="Users" ToRole="Rooms" />
+        </EntityType>
+        <Association Name="FK_Information_UserAgreement">
+          <End Type="MallVysotaModel.UserAgreement" Role="UserAgreement" Multiplicity="1" />
+          <End Type="MallVysotaModel.Information" Role="Information" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserAgreement">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Information">
+              <PropertyRef Name="IDUserAgreement" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RentMall_Information">
+          <End Type="MallVysotaModel.Information" Role="Information" Multiplicity="0..1" />
+          <End Type="MallVysotaModel.RentMall" Role="RentMall" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Information">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RentMall">
+              <PropertyRef Name="IDInformation" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RentMall_Rooms">
+          <End Type="MallVysotaModel.Rooms" Role="Rooms" Multiplicity="1" />
+          <End Type="MallVysotaModel.RentMall" Role="RentMall" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rooms">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RentMall">
+              <PropertyRef Name="IDRooms" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rooms_RoomStatus">
+          <End Type="MallVysotaModel.RoomStatus" Role="RoomStatus" Multiplicity="1" />
+          <End Type="MallVysotaModel.Rooms" Role="Rooms" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoomStatus">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Rooms">
+              <PropertyRef Name="IDRoomStatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rooms_RoomTypes">
+          <End Type="MallVysotaModel.RoomTypes" Role="RoomTypes" Multiplicity="1" />
+          <End Type="MallVysotaModel.Rooms" Role="Rooms" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoomTypes">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Rooms">
+              <PropertyRef Name="IDRoomType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rooms_Users">
+          <End Type="MallVysotaModel.Users" Role="Users" Multiplicity="0..1" />
+          <End Type="MallVysotaModel.Rooms" Role="Rooms" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Rooms">
+              <PropertyRef Name="IDRenter" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_Rooms">
+          <End Type="MallVysotaModel.Rooms" Role="Rooms" Multiplicity="0..1" />
+          <End Type="MallVysotaModel.Users" Role="Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rooms">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="IDRentedRooms" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище MallVysotaModelContainer" CdmEntityContainer="MallVysotaEntities">
+          <EntitySetMapping Name="Information">
+            <EntityTypeMapping TypeName="MallVysotaModel.Information">
+              <MappingFragment StoreEntitySet="Information">
+                <ScalarProperty Name="AboutApp" ColumnName="AboutApp" />
+                <ScalarProperty Name="IDUserAgreement" ColumnName="IDUserAgreement" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RentMall">
+            <EntityTypeMapping TypeName="MallVysotaModel.RentMall">
+              <MappingFragment StoreEntitySet="RentMall">
+                <ScalarProperty Name="IDInformation" ColumnName="IDInformation" />
+                <ScalarProperty Name="IDUsers" ColumnName="IDUsers" />
+                <ScalarProperty Name="IDRooms" ColumnName="IDRooms" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rooms">
+            <EntityTypeMapping TypeName="MallVysotaModel.Rooms">
+              <MappingFragment StoreEntitySet="Rooms">
+                <ScalarProperty Name="YearPrice" ColumnName="YearPrice" />
+                <ScalarProperty Name="MonthPrice" ColumnName="MonthPrice" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="IDRoomStatus" ColumnName="IDRoomStatus" />
+                <ScalarProperty Name="RentDateEnd" ColumnName="RentDateEnd" />
+                <ScalarProperty Name="RentDateStart" ColumnName="RentDateStart" />
+                <ScalarProperty Name="IDRenter" ColumnName="IDRenter" />
+                <ScalarProperty Name="IDRoomType" ColumnName="IDRoomType" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RoomStatus">
+            <EntityTypeMapping TypeName="MallVysotaModel.RoomStatus">
+              <MappingFragment StoreEntitySet="RoomStatus">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RoomTypes">
+            <EntityTypeMapping TypeName="MallVysotaModel.RoomTypes">
+              <MappingFragment StoreEntitySet="RoomTypes">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserAgreement">
+            <EntityTypeMapping TypeName="MallVysotaModel.UserAgreement">
+              <MappingFragment StoreEntitySet="UserAgreement">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="MallVysotaModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="IDRentedRooms" ColumnName="IDRentedRooms" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Facility" ColumnName="Facility" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
