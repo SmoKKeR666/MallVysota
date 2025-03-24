@@ -35,7 +35,7 @@
             <RowDefinition Height="50" />
             <RowDefinition Height="10" />
         </Grid.RowDefinitions>
-        <DataGrid Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" AutoGenerateColumns="False"
+        <DataGrid Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Grid.RowSpan="3" AutoGenerateColumns="False"
       HorizontalAlignment="Left" Name="DatGr" Loaded="DatGr_Loaded"  Width="auto"
   SelectionChanged="DatGr_SelectionChanged">
             <DataGrid.Columns>
@@ -57,9 +57,6 @@
     Binding="{Binding Rooms.YearPrice}"/>
             </DataGrid.Columns>
         </DataGrid>
-
-        <TextBlock Grid.Row="3" Grid.Column="1" Text="Выберите зал:" FontSize="20"/>
-        <ComboBox Grid.Row="3" Grid.Column="3" Name="RoomCmb" SelectionChanged="RoomCmb_SelectionChanged"  FontSize="20"/>
 
         <TextBlock Grid.Row="5" Grid.Column="1" Text="Введите название предприятия:" FontSize="20"/>
         <TextBox Grid.Row="5" Grid.Column="3" FontSize="20" Name="FacilityTxb"/>

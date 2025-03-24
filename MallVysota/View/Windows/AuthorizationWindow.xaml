@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Курсач.View.Windows"
         mc:Ignorable="d"
-        Title="AuthorizationWindow" Height="600" Width="400" WindowStartupLocation="CenterScreen" ResizeMode="NoResize"
-        Background="Black">
+        Title="Регистрация в ''Высоте''" Height="600" Width="400" WindowStartupLocation="CenterScreen" ResizeMode="NoResize"
+        Background="Black" Icon="/Resources/Images/zEiL8kNUrE.png">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="15" />

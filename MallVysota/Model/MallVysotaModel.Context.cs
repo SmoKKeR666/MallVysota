@@ -25,12 +25,10 @@ namespace MallVysota.Model
             throw new UnintentionalCodeFirstException();
         }
     
-        public DbSet<Information> Information { get; set; }
         public DbSet<RentMall> RentMall { get; set; }
         public DbSet<Rooms> Rooms { get; set; }
         public DbSet<RoomStatus> RoomStatus { get; set; }
         public DbSet<RoomTypes> RoomTypes { get; set; }
-        public DbSet<UserAgreement> UserAgreement { get; set; }
         public DbSet<Users> Users { get; set; }
     }
 }

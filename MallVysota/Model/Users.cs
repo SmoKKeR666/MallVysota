@@ -16,17 +16,17 @@ namespace MallVysota.Model
     {
         public Users()
         {
+            this.RentMall = new HashSet<RentMall>();
             this.Rooms = new HashSet<Rooms>();
         }
     
         public int ID { get; set; }
         public string FullName { get; set; }
-        public string Facility { get; set; }
-        public string Phone { get; set; }
         public string Login { get; set; }
         public string Password { get; set; }
         public Nullable<int> IDRentedRooms { get; set; }
     
+        public virtual ICollection<RentMall> RentMall { get; set; }
         public virtual ICollection<Rooms> Rooms { get; set; }
         public virtual Rooms Rooms1 { get; set; }
     }

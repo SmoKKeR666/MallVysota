@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Курсач"
         mc:Ignorable="d"
-        Title="Vysota" Height="600" Width="1000" 
+        Title="''Высота''" Height="600" Width="1000" Icon="/Resources/Images/zEiL8kNUrE.png"
         WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Grid>
         <Grid.ColumnDefinitions>

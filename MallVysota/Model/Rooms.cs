@@ -21,13 +21,13 @@ namespace MallVysota.Model
         }
     
         public int ID { get; set; }
+        public string Facility { get; set; }
         public string Name { get; set; }
         public int IDRoomType { get; set; }
         public Nullable<int> IDRenter { get; set; }
         public Nullable<System.DateTime> RentDateStart { get; set; }
         public Nullable<System.DateTime> RentDateEnd { get; set; }
         public int IDRoomStatus { get; set; }
-        public string Photo { get; set; }
         public decimal MonthPrice { get; set; }
         public Nullable<decimal> YearPrice { get; set; }
     

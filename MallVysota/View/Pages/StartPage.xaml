@@ -38,7 +38,7 @@
                 <Button Background="White" BorderBrush="Transparent" Width="230" Height="230" Name="RentBtn" Click="RentBtn_Click">
                     <StackPanel>
                         <Image Source="/Resources/Images/Figma_wTC2NXQqw7.png" Height="200"/>
-                        <TextBlock Text="Арендовать помещение" FontSize="20"/> 
+                        <TextBlock Text="Аренда" FontSize="20"/> 
                     </StackPanel>
                 </Button>
             </StackPanel>

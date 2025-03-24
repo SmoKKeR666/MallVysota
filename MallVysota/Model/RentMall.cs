@@ -17,9 +17,8 @@ namespace MallVysota.Model
         public int ID { get; set; }
         public int IDRooms { get; set; }
         public Nullable<int> IDUsers { get; set; }
-        public Nullable<int> IDInformation { get; set; }
     
-        public virtual Information Information { get; set; }
         public virtual Rooms Rooms { get; set; }
+        public virtual Users Users { get; set; }
     }
 }

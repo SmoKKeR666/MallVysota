@@ -75,18 +75,14 @@ namespace Курсач.View.Pages
             }
             Rooms rooms = new Rooms()
             {
+                Facility = FacilityTxb.Text,
                 RentDateStart = (DateTime)RentDateStartDtp.SelectedDate,
                 RentDateEnd = (DateTime)RentDateEndDtp.SelectedDate,
                 IDRenter = App.currentUser.ID,
                 IDRoomStatus = 1
             };
-            Users users = new Users()
-            {
-                Facility = FacilityTxb.Text,
-            };
 
             App.context.Rooms.Add(rooms);
-            App.context.Users.Add(users);
             App.context.SaveChanges();
             MessageBox.Show("Помещение добавлено!");
 

@@ -62,9 +62,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Model\Information.cs">
-      <DependentUpon>MallVysotaModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Model\MallVysotaModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -90,9 +87,6 @@
       <DependentUpon>MallVysotaModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\RoomTypes.cs">
-      <DependentUpon>MallVysotaModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\UserAgreement.cs">
       <DependentUpon>MallVysotaModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Users.cs">
@@ -280,6 +274,7 @@
       <DependentUpon>MallVysotaModel.edmx</DependentUpon>
       <LastGenOutput>MallVysotaModel.cs</LastGenOutput>
     </Content>
+    <Resource Include="Resources\Images\zEiL8kNUrE.png" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
