@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
@@ -33,9 +34,6 @@ namespace Курсач.View.Pages
             RoomCmb.ItemsSource = App.context.Rooms.ToList();
 
             DatGr.ItemsSource = App.context.RentMall.ToList();
-
-            MonthPriceTxtblk.DataContext = App.context.Rooms.ToList();
-            YearPriceTxtblk.DataContext = App.context.Rooms.ToList();
         }
 
         private void DatGr_Loaded(object sender, RoutedEventArgs e)
@@ -47,12 +45,18 @@ namespace Курсач.View.Pages
         {
             int selectedRoom = Convert.ToInt32(RoomCmb.SelectedValue);
             DatGr.ItemsSource = App.context.RentMall.Where(room => room.ID == selectedRoom).ToList();
+
+            //int currentMonthPrice = Convert.ToInt32(RoomCmb.SelectedValue);
+            //MonthPriceTxtblk.DataContext = App.context.Rooms.Where(mp => mp.MonthPrice == currentMonthPrice).ToList();
+
+            //int currentYearPrice = Convert.ToInt32(RoomCmb.SelectedValue);
+            //YearPriceTxtblk.DataContext = App.context.Rooms.Where(yp => yp.YearPrice == currentYearPrice).ToList();
+
         }
 
         private void DatGr_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            MonthPriceTxtblk.DataContext = DatGr.SelectedItem as Rooms;
-            YearPriceTxtblk.DataContext = DatGr.SelectedItem as Rooms;
+            
         }
 
         private void RentRoomBtn_Click(object sender, RoutedEventArgs e)
@@ -82,7 +86,7 @@ namespace Курсач.View.Pages
                 IDRoomStatus = 1
             };
 
-            App.context.Rooms.Add(rooms);
+            App.context.Rooms.AddOrUpdate(rooms);
             App.context.SaveChanges();
             MessageBox.Show("Помещение добавлено!");
 

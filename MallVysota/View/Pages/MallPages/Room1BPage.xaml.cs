@@ -24,10 +24,6 @@ namespace MallVysota.View.Pages.MallPages
         {
             InitializeComponent();
 
-            RoomCmb.SelectedValuePath = "ID";
-            RoomCmb.DisplayMemberPath = "Name";
-            RoomCmb.ItemsSource = App.context.Rooms.ToList();
-
             DatGr.ItemsSource = App.context.RentMall.ToList();
 
             MonthPriceTxtblk.DataContext = App.context.Rooms.ToList();
@@ -41,8 +37,7 @@ namespace MallVysota.View.Pages.MallPages
 
         private void RoomCmb_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            int selectedRoom = Convert.ToInt32(RoomCmb.SelectedValue);
-            DatGr.ItemsSource = App.context.RentMall.Where(room => room.ID == selectedRoom).ToList();
+
         }
 
         private void DatGr_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -52,7 +47,7 @@ namespace MallVysota.View.Pages.MallPages
 
         private void DatGr_Loaded(object sender, RoutedEventArgs e)
         {
-            DatGr.ItemsSource = App.context.RentMall.Where(x => x.IDUsers == App.currentUser.ID).ToList();
+            DatGr.ItemsSource = App.context.RentMall.ToList();
         }
     }
 }

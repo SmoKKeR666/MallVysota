@@ -47,7 +47,7 @@ namespace MallVysota.View.Pages.MallPages
 
         private void DatGr_Loaded(object sender, RoutedEventArgs e)
         {
-            DatGr.ItemsSource = App.context.RentMall.Where(x => x.IDUsers == App.currentUser.ID).ToList();
+            DatGr.ItemsSource = App.context.RentMall.ToList();
         }
     }
 }
